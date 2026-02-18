@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { io } from "socket.io-client";
 import authService from "../services/authService";
 
-const SOCKET_URL = "http://localhost:5000";
+const SOCKET_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace("/api", "");
 
 /**
  * Custom hook that manages the Socket.io connection for a document.
