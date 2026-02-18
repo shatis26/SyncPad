@@ -205,13 +205,13 @@ Open **http://localhost:5173** in your browser.
 
 ## 🚢 Deployment
 
-### Backend (Render / Railway / Fly.io)
+### Backend (Render)
 
 - **Build command:** `npm install`
 - **Start command:** `node index.js`
 - **Environment variables:** `PORT`, `MONGO_URI`, `JWT_SECRET`
 
-### Frontend (Vercel / Netlify)
+### Frontend (Vercel)
 
 - **Build command:** `npm run build`
 - **Output directory:** `dist`
@@ -235,7 +235,3 @@ Open **http://localhost:5173** in your browser.
 | **Dev Tools** | Nodemon, ESLint, PostCSS |
 
 ---
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
