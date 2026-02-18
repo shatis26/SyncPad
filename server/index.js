@@ -18,10 +18,22 @@ const app = express();
 const server = http.createServer(app);
 
 // ── CORS ───────────────────────────────────────────────────────────────
-const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    process.env.CORS_ORIGIN, // Set this to your Vercel URL on Render
+].filter(Boolean);
+
 app.use(
     cors({
-        origin: allowedOrigins,
+        origin: function (origin, callback) {
+            // Allow requests with no origin (mobile apps, curl, etc.)
+            if (!origin) return callback(null, true);
+            if (allowedOrigins.some((o) => origin.startsWith(o))) {
+                return callback(null, true);
+            }
+            callback(new Error("Not allowed by CORS"));
+        },
         credentials: true,
     })
 );
